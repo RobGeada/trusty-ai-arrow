@@ -155,7 +155,7 @@ public class ArrowConverters {
             if (fv.getMinorType() == Types.MinorType.FLOAT8) {
                 Float8Vector castv = (Float8Vector) fv;
                 castv.allocateNew(nrows);
-                IntStream.range(0, nrows).forEach(row -> castv.setSafe(row, inputs.get(row).getFeatures().get(finalCol).getValue().asNumber()));
+                IntStream.range(0, nrows).forEach(row -> castv.setSafe(row, (double) inputs.get(row).getFeatures().get(finalCol).getValue().getUnderlyingObject()));
                 castv.setValueCount(nrows);
             } else if (fv.getMinorType() == Types.MinorType.BIT) {
                 BitVector castv = (BitVector) fv;
